@@ -1,5 +1,8 @@
 # SlackAPI
 
+[![Hex.pm Version](https://img.shields.io/hexpm/v/slack_api.svg)](https://hex.pm/packages/slack_api)
+ 
+
 This project is designed to simplify the use of the Slack API by downloading API JSON data from the Slack API documentation([ex_slack_api_docs](https://github.com/inooid/ex_slack_api_docs)) and generating Elixir modules for each API. 
 
 This project reduces the friction often encountered when working with the Slack API, enabling developers to implement features more quickly and effectively.
