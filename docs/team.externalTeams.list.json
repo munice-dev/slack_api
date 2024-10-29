@@ -1,0 +1,155 @@
+{
+  "args": {
+    "connection_status_filter": {
+      "name": "connection_status_filter",
+      "type": "enum",
+      "desc": "Status of the connected team.",
+      "required": false,
+      "example": ""
+    },
+    "cursor": {
+      "name": "cursor",
+      "type": "string",
+      "desc": "Paginate through collections of data by setting parameter to the team_id attribute returned by a previous request's response_metadata. If not provided, the first page of the collection is returned. See pagination for more detail.",
+      "required": false,
+      "example": "T123ABC456"
+    },
+    "limit": {
+      "name": "limit",
+      "type": "integer",
+      "desc": "The maximum number of items to return per page",
+      "required": false,
+      "example": ""
+    },
+    "slack_connect_pref_filter": {
+      "name": "slack_connect_pref_filter",
+      "type": "array",
+      "desc": "Filters connected orgs by Slack Connect pref override(s). Value can be: approved_orgs_onlyallow_sc_file_uploadsprofile_visibilityaway_team_sc_invite_permissionsaccept_sc_invitessc_mpdm_to_privaterequire_sc_channel_for_sc_dmexternal_awareness_context_bar",
+      "required": false,
+      "example": ""
+    },
+    "sort_direction": {
+      "name": "sort_direction",
+      "type": "enum",
+      "desc": "Direction to sort in asc or desc",
+      "required": false,
+      "example": ""
+    },
+    "sort_field": {
+      "name": "sort_field",
+      "type": "enum",
+      "desc": "Name of the parameter that we are sorting by",
+      "required": false,
+      "example": ""
+    },
+    "token": {
+      "name": "token",
+      "type": "token",
+      "desc": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.",
+      "required": true,
+      "example": "xxxx-xxxxxxxxx-xxxx"
+    },
+    "workspace_filter": {
+      "name": "workspace_filter",
+      "type": "array",
+      "desc": "Shows connected orgs which are connected on a specified encoded workspace ID",
+      "required": false,
+      "example": ""
+    }
+  },
+  "name": "team.externalTeams.list",
+  "link": "/methods/team.externalTeams.list",
+  "desc": "Returns a list of all the external teams connected and details about the connection.",
+  "response": {
+    "ok": true,
+    "organizations": [
+      {
+        "canvas": {
+          "ownership_details": [
+            {
+              "team_id": "T123ABC456"
+            },
+            {
+              "count": 1
+            }
+          ],
+          "total_count": 1
+        },
+        "connected_workspaces": {
+          "workspace_id": "Jesse Inc",
+          "workspace_name": "E123ABC456"
+        },
+        "connection_status": "CONNECTED",
+        "im_channel_count": 1,
+        "is_sponsored": false,
+        "last_active_timestamp": 1718656058,
+        "lists": {
+          "ownership_details": [
+            {
+              "team_id": "T123ABC456"
+            },
+            {
+              "count": 1
+            }
+          ],
+          "total_count": 1
+        },
+        "mpim_channel_count": 1,
+        "private_channel_count": 1,
+        "public_channel_count": 1,
+        "slack_connect_prefs": {},
+        "team_domain": "sandra",
+        "team_id": "T123ABC456",
+        "team_name": "Sandra Inc."
+      }
+    ],
+    "response_metadata": {
+      "next_cursor": "T123ABC999"
+    },
+    "total_count": 1
+  },
+  "errors": {
+    "invalid_auth": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request.",
+    "invalid_array_arg": "The method was passed an array as an argument. Please only input valid strings.",
+    "token_expired": "Authentication token has expired",
+    "account_inactive": "Authentication token is for a deleted user or workspace when using a bot token.",
+    "not_allowed": "The user is not allowed to perform the action.",
+    "request_timeout": "The method was called via a POST request, but the POST data was either missing or truncated.",
+    "not_authed": "No authentication token provided.",
+    "user_cannot_manage_workspace": "The calling user cannot manage the workspace passed in the workspace filter.",
+    "ratelimited": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request.",
+    "deprecated_endpoint": "The endpoint has been deprecated.",
+    "invalid_workspace_filter": "The specified workspace is not valid.",
+    "restricted_action": "The user does not have permission to perform the action.",
+    "invalid_arg_name": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call.",
+    "method_deprecated": "The method has been deprecated.",
+    "fatal_error": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised.",
+    "invalid_arguments": "The method was either called with invalid arguments or some detail about the arguments passed is invalid, which is more likely when using complex arguments like blocks or attachments.",
+    "invalid_form_data": "The method was called via a POST request with Content-Typeapplication/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid.",
+    "service_unavailable": "The service is temporarily unavailable",
+    "org_login_required": "The workspace is undergoing an enterprise migration and will not be available until migration is complete.",
+    "missing_scope": "The token used is not granted the specific scope permissions required to complete this request.",
+    "is_bot": "This method cannot be called by a legacy bot.",
+    "token_revoked": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token.",
+    "ekm_access_denied": "Administrators have suspended the ability to post a message.",
+    "no_permission": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to.",
+    "internal_error": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised.",
+    "not_allowed_token_type": "The token type used in this request is not allowed.",
+    "enterprise_is_restricted": "The method cannot be called from an Enterprise.",
+    "accesslimited": "Access to this method is limited on the current network",
+    "invalid_post_type": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/jsonapplication/x-www-form-urlencodedmultipart/form-datatext/plain.",
+    "two_factor_setup_required": "Two factor setup is required.",
+    "team_added_to_org": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete.",
+    "missing_post_type": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header.",
+    "access_denied": "Access to a resource specified in the request is denied.",
+    "invalid_charset": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8iso-8859-1."
+  },
+  "warnings": {
+    "missing_charset": "The method was called via a POST request, and recommended practice for the specified Content-Type is to include a charset parameter. However, no charset was present. Specifically, non-form-data content types (e.g. text/plain) are the ones for which charset is recommended.",
+    "superfluous_charset": "The method was called via a POST request, and the specified Content-Type is not defined to understand the charset parameter. However, charset was in fact present. Specifically, form-data content types (e.g. multipart/form-data) are the ones for which charset is superfluous."
+  },
+  "is_deprecated": false,
+  "content_types": [
+    "application/x-www-form-urlencoded"
+  ]
+}

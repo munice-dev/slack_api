@@ -1,0 +1,100 @@
+{
+  "args": {
+    "channel": {
+      "name": "channel",
+      "type": "string",
+      "desc": "Resume a conversation by supplying an im or mpim's ID. Or provide the users field instead.",
+      "required": false,
+      "example": "G1234567890"
+    },
+    "prevent_creation": {
+      "name": "prevent_creation",
+      "type": "boolean",
+      "desc": "Do not create a direct message or multi-person direct message. This is used to see if there is an existing dm or mpdm.",
+      "required": false,
+      "example": "true"
+    },
+    "return_im": {
+      "name": "return_im",
+      "type": "boolean",
+      "desc": "Boolean, indicates you want the full IM channel definition in the response.",
+      "required": false,
+      "example": "true"
+    },
+    "token": {
+      "name": "token",
+      "type": "token",
+      "desc": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.",
+      "required": true,
+      "example": "xxxx-xxxxxxxxx-xxxx"
+    },
+    "users": {
+      "name": "users",
+      "type": "string",
+      "desc": "Comma separated lists of users. If only one user is included, this creates a 1:1 DM.  The ordering of the users is preserved whenever a multi-person direct message is returned. Supply a channel when not supplying users.",
+      "required": false,
+      "example": "W1234567890,U2345678901,U3456789012"
+    }
+  },
+  "name": "conversations.open",
+  "link": "/methods/conversations.open",
+  "desc": "Opens or resumes a direct message or multi-person direct message.",
+  "response": {
+    "channel": {
+      "id": "D069C7QFK"
+    },
+    "ok": true
+  },
+  "errors": {
+    "invalid_auth": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request.",
+    "channel_not_found": "Value passed for channel was invalid.",
+    "invalid_array_arg": "The method was passed an array as an argument. Please only input valid strings.",
+    "token_expired": "Authentication token has expired",
+    "account_inactive": "Authentication token is for a deleted user or workspace when using a bot token.",
+    "not_enough_users": "Needs at least 2 users to open",
+    "request_timeout": "The method was called via a POST request, but the POST data was either missing or truncated.",
+    "not_authed": "No authentication token provided.",
+    "ratelimited": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request.",
+    "deprecated_endpoint": "The endpoint has been deprecated.",
+    "user_disabled": "A specified user has been disabled.",
+    "invalid_arg_name": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call.",
+    "method_deprecated": "The method has been deprecated.",
+    "fatal_error": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised.",
+    "invalid_arguments": "The method was either called with invalid arguments or some detail about the arguments passed is invalid, which is more likely when using complex arguments like blocks or attachments.",
+    "invalid_form_data": "The method was called via a POST request with Content-Typeapplication/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid.",
+    "service_unavailable": "The service is temporarily unavailable",
+    "invalid_user_combination": "All external people must already be in at least one channel together to send a message.",
+    "org_login_required": "The workspace is undergoing an enterprise migration and will not be available until migration is complete.",
+    "missing_scope": "The token used is not granted the specific scope permissions required to complete this request.",
+    "token_revoked": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token.",
+    "ekm_access_denied": "Administrators have suspended the ability to post a message.",
+    "no_permission": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to.",
+    "user_not_visible": "The calling user is restricted from seeing the requested user.",
+    "internal_error": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised.",
+    "not_allowed_token_type": "The token type used in this request is not allowed.",
+    "enterprise_is_restricted": "The method cannot be called from an Enterprise.",
+    "too_many_users": "Needs at most 8 users to open",
+    "accesslimited": "Access to this method is limited on the current network",
+    "user_not_found": "Value(s) passed for users was invalid.",
+    "invalid_post_type": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/jsonapplication/x-www-form-urlencodedmultipart/form-datatext/plain.",
+    "two_factor_setup_required": "Two factor setup is required.",
+    "team_added_to_org": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete.",
+    "missing_post_type": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header.",
+    "team_access_not_granted": "The token used is not granted the specific workspace access required to complete this request.",
+    "method_not_supported_for_channel_type": "This type of conversation cannot be used with this method.",
+    "access_denied": "Access to a resource specified in the request is denied.",
+    "invalid_charset": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8iso-8859-1.",
+    "users_list_not_supplied": "Missing users in request"
+  },
+  "warnings": {
+    "already_open": "The conversation was already open so Slack did nothing.",
+    "missing_charset": "The method was called via a POST request, and recommended practice for the specified Content-Type is to include a charset parameter. However, no charset was present. Specifically, non-form-data content types (e.g. text/plain) are the ones for which charset is recommended.",
+    "no_op": "Slack did nothing when serving this request but it did not fail.",
+    "superfluous_charset": "The method was called via a POST request, and the specified Content-Type is not defined to understand the charset parameter. However, charset was in fact present. Specifically, form-data content types (e.g. multipart/form-data) are the ones for which charset is superfluous."
+  },
+  "is_deprecated": false,
+  "content_types": [
+    "application/x-www-form-urlencoded",
+    "application/json"
+  ]
+}

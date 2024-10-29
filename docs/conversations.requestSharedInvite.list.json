@@ -1,0 +1,276 @@
+{
+  "args": {
+    "cursor": {
+      "name": "cursor",
+      "type": "string",
+      "desc": "Paginate through collections of data by setting the cursor parameter to a next_cursor attribute returned by a previous request's response_metadata. See pagination for more detail.",
+      "required": false,
+      "example": "bG9nX2lkOjc5NjQ1NA=="
+    },
+    "include_approved": {
+      "name": "include_approved",
+      "type": "boolean",
+      "desc": "When true approved invitation requests will be returned, otherwise they will be excluded",
+      "required": false,
+      "example": "true"
+    },
+    "include_denied": {
+      "name": "include_denied",
+      "type": "boolean",
+      "desc": "When true denied invitation requests will be returned, otherwise they will be excluded",
+      "required": false,
+      "example": "true"
+    },
+    "include_expired": {
+      "name": "include_expired",
+      "type": "boolean",
+      "desc": "When true expired invitation requests will be returned, otherwise they will be excluded",
+      "required": false,
+      "example": "true"
+    },
+    "invite_ids": {
+      "name": "invite_ids",
+      "type": "array",
+      "desc": "An optional list of invitation ids to look up",
+      "required": false,
+      "example": ""
+    },
+    "limit": {
+      "name": "limit",
+      "type": "integer",
+      "desc": "The number of items to return. Must be between 1 - 1000 (inclusive).",
+      "required": false,
+      "example": ""
+    },
+    "token": {
+      "name": "token",
+      "type": "token",
+      "desc": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.",
+      "required": true,
+      "example": "xxxx-xxxxxxxxx-xxxx"
+    },
+    "user_id": {
+      "name": "user_id",
+      "type": "string",
+      "desc": "Optional filter to return invitation requests for the inviting user.",
+      "required": false,
+      "example": ""
+    }
+  },
+  "name": "conversations.requestSharedInvite.list",
+  "link": "/methods/conversations.requestSharedInvite.list",
+  "desc": "Lists requests to add external users to channels with ability to filter.",
+  "response": {
+    "invite_requests": [
+      {
+        "date_created": 1722372331,
+        "date_last_updated": 1722372331,
+        "expires_at": 1723581931,
+        "id": "I12345",
+        "inviting_team": {
+          "avatar_base_url": "https://dev.slack.com/avatarsource/",
+          "date_created": 1637947110,
+          "domain": "acme-corp",
+          "icon": {
+            "image_102": "https://.../avatar/avatars-teams/ava_0011-102.png",
+            "image_132": "https://.../avatar/avatars-teams/ava_0011-132.png",
+            "image_230": "https://.../avatar/avatars-teams/ava_0011-230.png",
+            "image_34": "https://.../avatar/avatars-teams/ava_0011-34.png",
+            "image_44": "https://.../avatar/avatars-teams/ava_0011-44.png",
+            "image_68": "https://.../avatar/avatars-teams/ava_0011-68.png",
+            "image_88": "https://.../avatar/avatars-teams/ava_0011-88.png",
+            "image_default": true
+          },
+          "id": "E12345",
+          "is_verified": false,
+          "name": "Acme corp",
+          "requires_sponsorship": false
+        },
+        "inviting_user": {
+          "id": "U12345",
+          "name": "acme-corp-user",
+          "profile": {
+            "avatar_hash": "hash",
+            "display_name": "acme-corp-user",
+            "display_name_normalized": "acme-corp-user",
+            "email": "acme-corp-user@acme-corp.com",
+            "image_192": "https://secure.gravatar.com/avatar/...0001-192.png",
+            "image_24": "https://secure.gravatar.com/avatar/...0001-24.png",
+            "image_32": "https://secure.gravatar.com/avatar/...0001-32.png",
+            "image_48": "https://secure.gravatar.com/avatar/...0001-48.png",
+            "image_512": "https://secure.gravatar.com/avatar/...0001-512.png",
+            "image_72": "https://secure.gravatar.com/avatar/...0001-72.png",
+            "real_name": "acme-corp-user",
+            "real_name_normalized": "acme-corp-user",
+            "team": "E12345"
+          },
+          "team_id": "E12345",
+          "updated": 1721741979,
+          "who_can_share_contact_card": "EVERYONE"
+        },
+        "is_external_limited": false,
+        "is_sponsored": true,
+        "recipient_email": "external-user@other-corp.com",
+        "target_user": {
+          "recipient_email": "external-user1@other-corp.com",
+          "recipient_user_id": "U123456"
+        }
+      },
+      {
+        "channel": {
+          "connections": [
+            {
+              "is_private": true,
+              "team": {
+                "avatar_base_url": "https://dev.slack.com/avatarsource/",
+                "date_created": 1637947110,
+                "domain": "acme-corp",
+                "icon": {
+                  "image_102": "https://.../ava_0011-102.png",
+                  "image_132": "https://.../ava_0011-132.png",
+                  "image_230": "https://.../ava_0011-230.png",
+                  "image_34": "https://.../ava_0011-34.png",
+                  "image_44": "https://.../ava_0011-44.png",
+                  "image_68": "https://.../ava_0011-68.png",
+                  "image_88": "https://.../ava_0011-88.png",
+                  "image_default": true
+                },
+                "id": "E12345",
+                "is_verified": false,
+                "name": "Acme Corp.",
+                "requires_sponsorship": false
+              }
+            }
+          ],
+          "date_created": 1721764754,
+          "id": "C12345",
+          "is_im": false,
+          "is_private": true,
+          "name": "channel-name",
+          "pending_connections": [],
+          "previous_connections": []
+        },
+        "date_created": 1722372331,
+        "date_denied": 1723581901,
+        "expires_at": 1723581931,
+        "id": "I12345",
+        "inviting_team": {
+          "avatar_base_url": "https://dev.slack.com/avatarsource/",
+          "date_created": 1637947110,
+          "domain": "acme-corp",
+          "icon": {
+            "image_102": "https://.../avatars-teams/ava_0011-102.png",
+            "image_132": "https://.../avatars-teams/ava_0011-132.png",
+            "image_230": "https://.../avatars-teams/ava_0011-230.png",
+            "image_34": "https://.../avatars-teams/ava_0011-34.png",
+            "image_44": "https://.../avatars-teams/ava_0011-44.png",
+            "image_68": "https://.../avatars-teams/ava_0011-68.png",
+            "image_88": "https://.../avatars-teams/ava_0011-88.png",
+            "image_default": true
+          },
+          "id": "E12345",
+          "is_verified": false,
+          "name": "Acme Corp.",
+          "requires_sponsorship": false
+        },
+        "inviting_user": {
+          "id": "U12345",
+          "name": "acme-corp-user",
+          "profile": {
+            "avatar_hash": "hash",
+            "display_name": "acme-corp-user",
+            "display_name_normalized": "acme-corp-user",
+            "email": "acme-corp-user@acme-corp.com",
+            "image_192": "https://secure.gravatar.com/avatar/...0001-192.png",
+            "image_24": "https://secure.gravatar.com/avatar/...0001-24.png",
+            "image_32": "https://secure.gravatar.com/avatar/...0001-32.png",
+            "image_48": "https://secure.gravatar.com/avatar/...0001-48.png",
+            "image_512": "https://secure.gravatar.com/avatar/...0001-512.png",
+            "image_72": "https://secure.gravatar.com/avatar/...0001-72.png",
+            "real_name": "acme-corp-user",
+            "real_name_normalized": "acme-corp-user",
+            "team": "E12345"
+          },
+          "team_id": "E12345",
+          "updated": 1721741979,
+          "who_can_share_contact_card": "EVERYONE"
+        },
+        "is_external_limited": false,
+        "reviewing_user": {
+          "id": "U12345",
+          "name": "acme-corp-user",
+          "profile": {
+            "avatar_hash": "hash",
+            "display_name": "acme-corp-user",
+            "display_name_normalized": "acme-corp-user",
+            "email": "acme-corp-user@acme-corp.com",
+            "image_192": "https://secure.gravatar.com/avatar/...0001-192.png",
+            "image_24": "https://secure.gravatar.com/avatar/...0001-24.png",
+            "image_32": "https://secure.gravatar.com/avatar/...0001-32.png",
+            "image_48": "https://secure.gravatar.com/avatar/...0001-48.png",
+            "image_512": "https://secure.gravatar.com/avatar/...0001-512.png",
+            "image_72": "https://secure.gravatar.com/avatar/...0001-72.png",
+            "real_name": "acme-corp-user",
+            "real_name_normalized": "acme-corp-user",
+            "team": "E12345"
+          },
+          "team_id": "E12345",
+          "updated": 1721741979,
+          "who_can_share_contact_card": "EVERYONE"
+        },
+        "target_user": {
+          "recipient_email": "external-user@other-corp.com"
+        }
+      }
+    ],
+    "ok": true,
+    "response_metadata": {
+      "next_cursor": "aWQ6STAxNkszN0FBQUU="
+    }
+  },
+  "errors": {
+    "invalid_auth": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request.",
+    "invalid_array_arg": "The method was passed an array as an argument. Please only input valid strings.",
+    "token_expired": "Authentication token has expired",
+    "account_inactive": "Authentication token is for a deleted user or workspace when using a bot token.",
+    "request_timeout": "The method was called via a POST request, but the POST data was either missing or truncated.",
+    "not_authed": "No authentication token provided.",
+    "not_implemented": "its not implemented!  TODO: remove me",
+    "ratelimited": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request.",
+    "deprecated_endpoint": "The endpoint has been deprecated.",
+    "invalid_cursor": "The provided cursor is not valid.",
+    "restricted_action": "A team preference prevents the user from listing invitation requests.",
+    "invalid_arg_name": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call.",
+    "method_deprecated": "The method has been deprecated.",
+    "fatal_error": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised.",
+    "invalid_arguments": "The method was either called with invalid arguments or some detail about the arguments passed is invalid, which is more likely when using complex arguments like blocks or attachments.",
+    "invalid_form_data": "The method was called via a POST request with Content-Typeapplication/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid.",
+    "service_unavailable": "The service is temporarily unavailable",
+    "org_login_required": "The workspace is undergoing an enterprise migration and will not be available until migration is complete.",
+    "missing_scope": "The token used is not granted the specific scope permissions required to complete this request.",
+    "is_bot": "This method cannot be called by a legacy bot.",
+    "token_revoked": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token.",
+    "ekm_access_denied": "Administrators have suspended the ability to post a message.",
+    "no_permission": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to.",
+    "internal_error": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised.",
+    "user_is_restricted": "This method cannot be called by a restricted user or single channel guest.",
+    "not_allowed_token_type": "The token type used in this request is not allowed.",
+    "enterprise_is_restricted": "The method cannot be called from an Enterprise.",
+    "accesslimited": "Access to this method is limited on the current network",
+    "invalid_post_type": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/jsonapplication/x-www-form-urlencodedmultipart/form-datatext/plain.",
+    "two_factor_setup_required": "Two factor setup is required.",
+    "team_added_to_org": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete.",
+    "missing_post_type": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header.",
+    "access_denied": "Access to a resource specified in the request is denied.",
+    "invalid_charset": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8iso-8859-1."
+  },
+  "warnings": {
+    "missing_charset": "The method was called via a POST request, and recommended practice for the specified Content-Type is to include a charset parameter. However, no charset was present. Specifically, non-form-data content types (e.g. text/plain) are the ones for which charset is recommended.",
+    "superfluous_charset": "The method was called via a POST request, and the specified Content-Type is not defined to understand the charset parameter. However, charset was in fact present. Specifically, form-data content types (e.g. multipart/form-data) are the ones for which charset is superfluous."
+  },
+  "is_deprecated": false,
+  "content_types": [
+    "application/x-www-form-urlencoded",
+    "application/json"
+  ]
+}

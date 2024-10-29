@@ -1,0 +1,112 @@
+{
+  "args": {
+    "channel_ids": {
+      "name": "channel_ids",
+      "type": "array",
+      "desc": "List of encoded channel IDs",
+      "required": false,
+      "example": "C0000000001,C0000000002"
+    },
+    "org_ids": {
+      "name": "org_ids",
+      "type": "array",
+      "desc": "List of encoded organization IDs",
+      "required": false,
+      "example": "E00000001,E00000002"
+    },
+    "team_ids": {
+      "name": "team_ids",
+      "type": "array",
+      "desc": "List of encoded workspace IDs",
+      "required": false,
+      "example": "T0000000001,T0000000002"
+    },
+    "token": {
+      "name": "token",
+      "type": "token",
+      "desc": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.",
+      "required": true,
+      "example": "xxxx-xxxxxxxxx-xxxx"
+    },
+    "trigger_id": {
+      "name": "trigger_id",
+      "type": "string",
+      "desc": "Encoded ID of the trigger",
+      "required": true,
+      "example": "Ft0000000001"
+    },
+    "user_ids": {
+      "name": "user_ids",
+      "type": "array",
+      "desc": "List of encoded user IDs",
+      "required": false,
+      "example": "U0000000001,U0000000002"
+    }
+  },
+  "name": "workflows.triggers.permissions.remove",
+  "link": "/methods/workflows.triggers.permissions.remove",
+  "desc": "Revoke an entity's access to a trigger that has its permission type set to named_entities",
+  "response": {
+    "channel_ids": [
+      "C014LMDP71R"
+    ],
+    "ok": true,
+    "permission_type": "named_entities",
+    "user_ids": [
+      "U014KLZE350",
+      "U01565LTEBD"
+    ]
+  },
+  "errors": {
+    "invalid_auth": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request.",
+    "invalid_array_arg": "The method was passed an array as an argument. Please only input valid strings.",
+    "org_not_connected": "One of more of the listed organizations were not connected.",
+    "token_expired": "Authentication token has expired",
+    "invalid_permission_type": "This trigger requires permission_type to be set as named_entities before adding users.",
+    "account_inactive": "Authentication token is for a deleted user or workspace when using a bot token.",
+    "request_timeout": "The method was called via a POST request, but the POST data was either missing or truncated.",
+    "not_authed": "No authentication token provided.",
+    "ratelimited": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request.",
+    "deprecated_endpoint": "The endpoint has been deprecated.",
+    "connected_org_denied": "The workspace admin does not allow connected organizations to be named_entities.",
+    "invalid_arg_name": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call.",
+    "method_deprecated": "The method has been deprecated.",
+    "unknown_method": "This method does not exist.",
+    "fatal_error": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised.",
+    "invalid_arguments": "The method was either called with invalid arguments or some detail about the arguments passed is invalid, which is more likely when using complex arguments like blocks or attachments.",
+    "invalid_form_data": "The method was called via a POST request with Content-Typeapplication/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid.",
+    "too_many_named_entities": "Too many named entities passed into the trigger permissions setting.",
+    "shared_channel_denied": "The workspace admin does not allow shared channels to be named_entities.",
+    "service_unavailable": "The service is temporarily unavailable",
+    "org_login_required": "The workspace is undergoing an enterprise migration and will not be available until migration is complete.",
+    "missing_scope": "The token used is not granted the specific scope permissions required to complete this request.",
+    "is_bot": "This method cannot be called by a legacy bot.",
+    "token_revoked": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token.",
+    "ekm_access_denied": "Administrators have suspended the ability to post a message.",
+    "no_permission": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to.",
+    "internal_error": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised.",
+    "not_allowed_token_type": "The token type used in this request is not allowed.",
+    "enterprise_is_restricted": "The method cannot be called from an Enterprise.",
+    "connected_user_denied": "The workspace admin does not allow connected users to be named_entities.",
+    "trigger_not_found": "This trigger does not exist.",
+    "accesslimited": "Access to this method is limited on the current network",
+    "org_not_found": "One or more of the listed organizations could not be found.",
+    "invalid_post_type": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/jsonapplication/x-www-form-urlencodedmultipart/form-datatext/plain.",
+    "connected_team_denied": "The workspace admin does not allow connected teams to be named_entities.",
+    "two_factor_setup_required": "Two factor setup is required.",
+    "team_added_to_org": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete.",
+    "missing_post_type": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header.",
+    "named_entities_cannot_be_empty": "There must be at least one valid named entity",
+    "access_denied": "Access to a resource specified in the request is denied.",
+    "invalid_charset": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8iso-8859-1."
+  },
+  "warnings": {
+    "missing_charset": "The method was called via a POST request, and recommended practice for the specified Content-Type is to include a charset parameter. However, no charset was present. Specifically, non-form-data content types (e.g. text/plain) are the ones for which charset is recommended.",
+    "superfluous_charset": "The method was called via a POST request, and the specified Content-Type is not defined to understand the charset parameter. However, charset was in fact present. Specifically, form-data content types (e.g. multipart/form-data) are the ones for which charset is superfluous."
+  },
+  "is_deprecated": false,
+  "content_types": [
+    "application/x-www-form-urlencoded",
+    "application/json"
+  ]
+}

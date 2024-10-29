@@ -1,0 +1,138 @@
+{
+  "args": {
+    "channel": {
+      "name": "channel",
+      "type": "string",
+      "desc": "Channel ID of the message. Both channel and ts must be provided together, orunfurl_id and source must be provided together.",
+      "required": true,
+      "example": "C1234567890"
+    },
+    "source": {
+      "name": "source",
+      "type": "enum",
+      "desc": "The source of the link to unfurl. The source may either be composer, when the link is inside the message composer, or conversations_history, when the link has been posted to a conversation.",
+      "required": false,
+      "example": "composer"
+    },
+    "token": {
+      "name": "token",
+      "type": "token",
+      "desc": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.",
+      "required": true,
+      "example": "xxxx-xxxxxxxxx-xxxx"
+    },
+    "ts": {
+      "name": "ts",
+      "type": "string",
+      "desc": "Timestamp of the message to add unfurl behavior to.",
+      "required": true,
+      "example": ""
+    },
+    "unfurl_id": {
+      "name": "unfurl_id",
+      "type": "string",
+      "desc": "The ID of the link to unfurl. Both unfurl_id and source must be provided together, orchannel and ts must be provided together.",
+      "required": false,
+      "example": "Uxxxxxxx-909b5454-75f8-4ac4-b325-1b40e230bbd8"
+    },
+    "unfurls": {
+      "name": "unfurls",
+      "type": "string",
+      "desc": "URL-encoded JSON map with keys set to URLs featured in the the message, pointing to their unfurl blocks or message attachments.",
+      "required": true,
+      "example": ""
+    },
+    "user_auth_blocks": {
+      "name": "user_auth_blocks",
+      "type": "string",
+      "desc": "Provide a JSON based array of structured blocks presented as URL-encoded string to send as an ephemeral message to the user as invitation to authenticate further and enable full unfurling behavior",
+      "required": false,
+      "example": ""
+    },
+    "user_auth_message": {
+      "name": "user_auth_message",
+      "type": "null",
+      "desc": "Provide a simply-formatted string to send as an ephemeral message to the user as invitation to authenticate further and enable full unfurling behavior. Provides two buttons, Not now or Never ask me again.",
+      "required": false,
+      "example": ""
+    },
+    "user_auth_required": {
+      "name": "user_auth_required",
+      "type": "boolean",
+      "desc": "Set to true or 1 to indicate the user must install your Slack app to trigger unfurls for this domain",
+      "required": false,
+      "example": "true"
+    },
+    "user_auth_url": {
+      "name": "user_auth_url",
+      "type": "null",
+      "desc": "Send users to this custom URL where they will complete authentication in your app to fully trigger unfurling. Value should be properly URL-encoded.",
+      "required": false,
+      "example": "https://example.com/onboarding?user_id=xxx"
+    }
+  },
+  "name": "chat.unfurl",
+  "link": "/methods/chat.unfurl",
+  "desc": "Provide custom unfurl behavior for user-posted URLs",
+  "response": {
+    "ok": true
+  },
+  "errors": {
+    "invalid_auth": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request.",
+    "invalid_array_arg": "The method was passed an array as an argument. Please only input valid strings.",
+    "token_expired": "Authentication token has expired",
+    "account_inactive": "Authentication token is for a deleted user or workspace when using a bot token.",
+    "request_timeout": "The method was called via a POST request, but the POST data was either missing or truncated.",
+    "not_authed": "No authentication token provided.",
+    "cannot_find_channel": "The specified channel could not be located for this token.",
+    "ratelimited": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request.",
+    "missing_ts": "The request is missing the ts parameter",
+    "deprecated_endpoint": "The endpoint has been deprecated.",
+    "cannot_auth_user": "The current user cannot be authenticated.",
+    "invalid_arg_name": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call.",
+    "method_deprecated": "The method has been deprecated.",
+    "cannot_unfurl_url": "The URL cannot be unfurled. This error may be returned if you haven't acknowledged a link_shared event tied to the same URL. It is also returned when the domain appears in a workspace's administrative blocklists.",
+    "invalid_unfurls_format": "The unfurls parameter cannot be JSON-decoded into a map of URLs to attachments.",
+    "fatal_error": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised.",
+    "invalid_arguments": "The method was either called with invalid arguments or some detail about the arguments passed is invalid, which is more likely when using complex arguments like blocks or attachments.",
+    "invalid_form_data": "The method was called via a POST request with Content-Typeapplication/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid.",
+    "service_unavailable": "The service is temporarily unavailable",
+    "invalid_source": "The unfurl source is invalid.",
+    "org_login_required": "The workspace is undergoing an enterprise migration and will not be available until migration is complete.",
+    "missing_scope": "The token used is not granted the specific scope permissions required to complete this request.",
+    "is_bot": "This method cannot be called by a legacy bot.",
+    "token_revoked": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token.",
+    "ekm_access_denied": "Administrators have suspended the ability to post a message.",
+    "no_permission": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to.",
+    "missing_source": "The request is missing the source parameter.",
+    "internal_error": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised.",
+    "not_allowed_token_type": "The token type used in this request is not allowed.",
+    "cannot_prompt": "The current user has already interacted with and dismissed a prompt for this application.",
+    "enterprise_is_restricted": "The method cannot be called from an Enterprise.",
+    "cannot_find_message": "The ts value in the request does not match a message.",
+    "cannot_find_service": "A record of your app being allowed to unfurl for this workspace could not be found.",
+    "accesslimited": "Access to this method is limited on the current network",
+    "invalid_post_type": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/jsonapplication/x-www-form-urlencodedmultipart/form-datatext/plain.",
+    "missing_unfurl_id": "The request is missing the unfurl_id parameter.",
+    "cannot_unfurl_message": "The URL cannot be unfurled because the URL provided does not appear in the message.",
+    "two_factor_setup_required": "Two factor setup is required.",
+    "missing_channel": "The request is missing the channel parameter",
+    "team_added_to_org": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete.",
+    "missing_post_type": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header.",
+    "team_access_not_granted": "The token used is not granted the specific workspace access required to complete this request.",
+    "access_denied": "Access to a resource specified in the request is denied.",
+    "invalid_charset": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8iso-8859-1.",
+    "invalid_unfurl_id": "The unfurl ID is invalid.",
+    "cannot_parse_attachment": "The provided unfurls argument could not be parsed or understood.",
+    "missing_unfurls": "The request is missing the unfurls parameter."
+  },
+  "warnings": {
+    "missing_charset": "The method was called via a POST request, and recommended practice for the specified Content-Type is to include a charset parameter. However, no charset was present. Specifically, non-form-data content types (e.g. text/plain) are the ones for which charset is recommended.",
+    "superfluous_charset": "The method was called via a POST request, and the specified Content-Type is not defined to understand the charset parameter. However, charset was in fact present. Specifically, form-data content types (e.g. multipart/form-data) are the ones for which charset is superfluous."
+  },
+  "is_deprecated": false,
+  "content_types": [
+    "application/x-www-form-urlencoded",
+    "application/json"
+  ]
+}

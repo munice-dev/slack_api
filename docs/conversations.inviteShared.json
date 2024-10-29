@@ -1,0 +1,116 @@
+{
+  "args": {
+    "channel": {
+      "name": "channel",
+      "type": "string",
+      "desc": "ID of the channel on your team that you'd like to share",
+      "required": true,
+      "example": "C1234567890"
+    },
+    "emails": {
+      "name": "emails",
+      "type": "array",
+      "desc": "Optional email to receive this invite. Either emails or user_ids must be provided. Only one email or one user ID may be invited at a time.",
+      "required": false,
+      "example": ""
+    },
+    "external_limited": {
+      "name": "external_limited",
+      "type": "boolean",
+      "desc": "Optional boolean on whether invite is to an external limited member. Defaults to true.",
+      "required": false,
+      "example": "true"
+    },
+    "token": {
+      "name": "token",
+      "type": "token",
+      "desc": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.",
+      "required": true,
+      "example": "xxxx-xxxxxxxxx-xxxx"
+    },
+    "user_ids": {
+      "name": "user_ids",
+      "type": "array",
+      "desc": "Optional user_id to receive this invite. Either emails or user_ids must be provided. Only one email or one user ID may be invited at a time.",
+      "required": false,
+      "example": ""
+    }
+  },
+  "name": "conversations.inviteShared",
+  "link": "/methods/conversations.inviteShared",
+  "desc": "Sends an invitation to a Slack Connect channel",
+  "response": {
+    "invite_id": "I02UKAJ6RJA",
+    "is_legacy_shared_channel": false,
+    "ok": true
+  },
+  "errors": {
+    "cannot_share_cross_workspace_channel": "You cannot share a cross-workspace or org-wide channel.",
+    "invalid_auth": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request.",
+    "channel_not_found": "The channel provided was not found.",
+    "invalid_array_arg": "The method was passed an array as an argument. Please only input valid strings.",
+    "not_allowed_for_grid_workspace": "This workspace does not have Slack Connect enabled.",
+    "token_expired": "Authentication token has expired",
+    "account_inactive": "Authentication token is for a deleted user or workspace when using a bot token.",
+    "request_timeout": "The method was called via a POST request, but the POST data was either missing or truncated.",
+    "not_authed": "No authentication token provided.",
+    "connection_limit_exceeded_pending": "This channel already has a pending invite.",
+    "not_owner": "Only the host organization for a channel can request to share it.",
+    "ratelimited": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request.",
+    "invalid_channel_type": "You cannot share MPDMs or DMs.",
+    "url_in_message": "The message contained a URL.",
+    "deprecated_endpoint": "The endpoint has been deprecated.",
+    "restricted_action": "A team preference does not allow this authorization to send invites.",
+    "not_in_channel": "The app is not a member of the channel to invite.",
+    "invalid_arg_name": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call.",
+    "recipients_not_specified": "Bots are required to specify which users to invite.",
+    "method_deprecated": "The method has been deprecated.",
+    "too_many_emails": "Too many email recipients were passed in the emails parameter.",
+    "fatal_error": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised.",
+    "invalid_arguments": "The method was either called with invalid arguments or some detail about the arguments passed is invalid, which is more likely when using complex arguments like blocks or attachments.",
+    "invalid_form_data": "The method was called via a POST request with Content-Typeapplication/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid.",
+    "no_external_invite_permission": "User does not have permission to invite an external user.",
+    "invalid_email": "At least one email address provided is invalid.",
+    "ratelimit": "The rate-limit for this method has been reached. The ratelimit is applied on a per-user basis when you pass the emails parameter.",
+    "service_unavailable": "The service is temporarily unavailable",
+    "connection_limit_exceeded": "This channel has hit the limit of external connections.",
+    "not_supported": "This channel cannot be shared.",
+    "channel_archived": "You cannot share an archived channel.",
+    "org_login_required": "The workspace is undergoing an enterprise migration and will not be available until migration is complete.",
+    "already_in_channel": "User is already in the channel.",
+    "missing_scope": "The token used is not granted the specific scope permissions required to complete this request.",
+    "is_bot": "This method cannot be called by a legacy bot.",
+    "token_revoked": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token.",
+    "cannot_share_mandatory_channel": "You cannot share #general or mandatory channels.",
+    "ekm_access_denied": "Administrators have suspended the ability to post a message.",
+    "no_permission": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to.",
+    "invite_lookup_error": "An error occurred while attempting to look for existing invites.",
+    "internal_error": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised.",
+    "user_is_restricted": "This method cannot be called by a restricted user or single channel guest.",
+    "not_allowed_token_type": "The token type used in this request is not allowed.",
+    "enterprise_is_restricted": "The method cannot be called from an Enterprise.",
+    "accesslimited": "Access to this method is limited on the current network",
+    "user_not_found": "User lookup failed.",
+    "invalid_post_type": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/jsonapplication/x-www-form-urlencodedmultipart/form-datatext/plain.",
+    "two_factor_setup_required": "Two factor setup is required.",
+    "team_added_to_org": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete.",
+    "missing_post_type": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header.",
+    "member_limit_exceeded": "This channel that has hit the limit of members",
+    "team_access_not_granted": "The token used is not granted the specific workspace access required to complete this request.",
+    "access_denied": "Access to a resource specified in the request is denied.",
+    "invalid_charset": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8iso-8859-1.",
+    "legacy_connection_limit_exceeded": "You cannot share a legacy ESC channel with a third team",
+    "message_too_long": "The provided message was longer than 560 characters.",
+    "not_paid": "This feature is only available to paid teams.",
+    "invite_not_found": "An error occurred while inviting users."
+  },
+  "warnings": {
+    "missing_charset": "The method was called via a POST request, and recommended practice for the specified Content-Type is to include a charset parameter. However, no charset was present. Specifically, non-form-data content types (e.g. text/plain) are the ones for which charset is recommended.",
+    "superfluous_charset": "The method was called via a POST request, and the specified Content-Type is not defined to understand the charset parameter. However, charset was in fact present. Specifically, form-data content types (e.g. multipart/form-data) are the ones for which charset is superfluous."
+  },
+  "is_deprecated": false,
+  "content_types": [
+    "application/x-www-form-urlencoded",
+    "application/json"
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "args": {
+    "channel": {
+      "name": "channel",
+      "type": "string",
+      "desc": "Filter files appearing in a specific channel, indicated by its ID.",
+      "required": false,
+      "example": "C1234567890"
+    },
+    "count": {
+      "name": "count",
+      "type": "integer",
+      "desc": "Number of items to return per page.",
+      "required": false,
+      "example": "20"
+    },
+    "page": {
+      "name": "page",
+      "type": "integer",
+      "desc": "Page number of results to return.",
+      "required": false,
+      "example": "2"
+    },
+    "show_files_hidden_by_limit": {
+      "name": "show_files_hidden_by_limit",
+      "type": "boolean",
+      "desc": "Show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit.",
+      "required": false,
+      "example": "true"
+    },
+    "team_id": {
+      "name": "team_id",
+      "type": "string",
+      "desc": "encoded team id to list files in, required if org token is used",
+      "required": false,
+      "example": "T1234567890"
+    },
+    "token": {
+      "name": "token",
+      "type": "token",
+      "desc": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.",
+      "required": true,
+      "example": "xxxx-xxxxxxxxx-xxxx"
+    },
+    "ts_from": {
+      "name": "ts_from",
+      "type": "string",
+      "desc": "Filter files created after this timestamp (inclusive).",
+      "required": false,
+      "example": "123456789"
+    },
+    "ts_to": {
+      "name": "ts_to",
+      "type": "string",
+      "desc": "Filter files created before this timestamp (inclusive).",
+      "required": false,
+      "example": "123456789"
+    },
+    "types": {
+      "name": "types",
+      "type": "string",
+      "desc": "Filter files by type (see below). You can pass multiple values in the types argument, like types=spaces,snippets.The default value is all, which does not filter the list.",
+      "required": false,
+      "example": "images"
+    },
+    "user": {
+      "name": "user",
+      "type": "string",
+      "desc": "Filter files created by a single user.",
+      "required": false,
+      "example": "W1234567890"
+    }
+  },
+  "name": "files.list",
+  "link": "/methods/files.list",
+  "desc": "List for a team, in a channel, or from a user with applied filters.",
+  "response": {
+    "files": [
+      {
+        "filetype": "gif",
+        "thumb_64": "https://.../billair_64.png",
+        "thumb_160": "https://.../billair_=_160.png",
+        "thumb_360_w": 176,
+        "mode": "hosted",
+        "comments_count": 0,
+        "public_url_shared": false,
+        "pjpeg": "https://.../billair_pjpeg.jpg",
+        "channels": [
+          "C0T8SE4AU"
+        ],
+        "url_private": "https://.../billair.gif",
+        "url_private_download": "https://.../billair.gif",
+        "created": 1531763254,
+        "external_type": "",
+        "thumb_80": "https://.../billair_80.png",
+        "mimetype": "image/gif",
+        "pretty_type": "GIF",
+        "ims": [],
+        "original_h": 226,
+        "groups": [],
+        "name": "billair.gif",
+        "id": "F0S43P1CZ",
+        "image_exif_rotation": 1,
+        "display_as_bot": false,
+        "user": "U061F7AUR",
+        "original_w": 176,
+        "thumb_360_gif": "https://.../billair_360.gif",
+        "size": 144538,
+        "permalink_public": "https://.../...",
+        "timestamp": 1531763254,
+        "thumb_360": "https://.../billair_360.png",
+        "thumb_360_h": 226,
+        "permalink": "https://.../billair.gif",
+        "title": "billair.gif",
+        "is_external": false,
+        "username": "",
+        "editable": false,
+        "is_public": true,
+        "deanimate_gif": "https://.../billair_deanimate_gif.png"
+      },
+      {
+        "filetype": "gif",
+        "thumb_64": "https://.../tedair_64.png",
+        "thumb_160": "https://.../tedair_=_160.png",
+        "thumb_360_w": 176,
+        "mode": "hosted",
+        "comments_count": 0,
+        "public_url_shared": false,
+        "pjpeg": "https://.../tedair_pjpeg.jpg",
+        "channels": [
+          "C0T8SE4AU"
+        ],
+        "url_private": "https://.../tedair.gif",
+        "url_private_download": "https://.../tedair.gif",
+        "created": 1531763342,
+        "external_type": "",
+        "thumb_80": "https://.../tedair_80.png",
+        "mimetype": "image/gif",
+        "pretty_type": "GIF",
+        "ims": [],
+        "original_h": 226,
+        "groups": [],
+        "name": "tedair.gif",
+        "id": "F0S43PZDF",
+        "image_exif_rotation": 1,
+        "display_as_bot": false,
+        "user": "U061F7AUR",
+        "original_w": 176,
+        "thumb_360_gif": "https://.../tedair_360.gif",
+        "size": 137531,
+        "permalink_public": "https://.../...",
+        "timestamp": 1531763342,
+        "thumb_360": "https://.../tedair_360.png",
+        "thumb_360_h": 226,
+        "permalink": "https://.../tedair.gif",
+        "title": "tedair.gif",
+        "is_external": false,
+        "username": "",
+        "editable": false,
+        "is_public": true,
+        "deanimate_gif": "https://.../tedair_deanimate_gif.png"
+      }
+    ],
+    "ok": true,
+    "paging": {
+      "count": 100,
+      "page": 1,
+      "pages": 1,
+      "total": 2
+    }
+  },
+  "errors": {
+    "invalid_auth": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request.",
+    "invalid_array_arg": "The method was passed an array as an argument. Please only input valid strings.",
+    "token_expired": "Authentication token has expired",
+    "account_inactive": "Authentication token is for a deleted user or workspace when using a bot token.",
+    "slack_connect_canvas_sharing_blocked": "Admin has disabled sharing of Canvas links in all Slack Connect communications",
+    "request_timeout": "The method was called via a POST request, but the POST data was either missing or truncated.",
+    "not_authed": "No authentication token provided.",
+    "ratelimited": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request.",
+    "deprecated_endpoint": "The endpoint has been deprecated.",
+    "invalid_arg_name": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call.",
+    "method_deprecated": "The method has been deprecated.",
+    "fatal_error": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised.",
+    "invalid_arguments": "The method was either called with invalid arguments or some detail about the arguments passed is invalid, which is more likely when using complex arguments like blocks or attachments.",
+    "invalid_form_data": "The method was called via a POST request with Content-Typeapplication/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid.",
+    "missing_argument": "A required argument is missing.",
+    "service_unavailable": "The service is temporarily unavailable",
+    "org_login_required": "The workspace is undergoing an enterprise migration and will not be available until migration is complete.",
+    "missing_scope": "The token used is not granted the specific scope permissions required to complete this request.",
+    "is_bot": "This method cannot be called by a legacy bot.",
+    "token_revoked": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token.",
+    "ekm_access_denied": "Administrators have suspended the ability to post a message.",
+    "no_permission": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to.",
+    "internal_error": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised.",
+    "unknown_type": "Value passed for types was invalid",
+    "not_allowed_token_type": "The token type used in this request is not allowed.",
+    "enterprise_is_restricted": "The method cannot be called from an Enterprise.",
+    "accesslimited": "Access to this method is limited on the current network",
+    "user_not_found": "Value passed for user was invalid",
+    "invalid_post_type": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/jsonapplication/x-www-form-urlencodedmultipart/form-datatext/plain.",
+    "two_factor_setup_required": "Two factor setup is required.",
+    "team_added_to_org": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete.",
+    "missing_post_type": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header.",
+    "team_access_not_granted": "The token used is not granted the specific workspace access required to complete this request.",
+    "access_denied": "Access to a resource specified in the request is denied.",
+    "invalid_charset": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8iso-8859-1."
+  },
+  "warnings": {
+    "missing_charset": "The method was called via a POST request, and recommended practice for the specified Content-Type is to include a charset parameter. However, no charset was present. Specifically, non-form-data content types (e.g. text/plain) are the ones for which charset is recommended.",
+    "superfluous_charset": "The method was called via a POST request, and the specified Content-Type is not defined to understand the charset parameter. However, charset was in fact present. Specifically, form-data content types (e.g. multipart/form-data) are the ones for which charset is superfluous."
+  },
+  "is_deprecated": false,
+  "content_types": [
+    "application/x-www-form-urlencoded"
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "args": {
+    "app_id": {
+      "name": "app_id",
+      "type": "string",
+      "desc": "The ID of the app to get activities from.",
+      "required": false,
+      "example": "A12345"
+    },
+    "component_id": {
+      "name": "component_id",
+      "type": "string",
+      "desc": "The component ID of log events to be returned. Will be FnXXXXXX for functions, and WfXXXXXX for worflows",
+      "required": false,
+      "example": "Wf013SMGL4V9"
+    },
+    "component_type": {
+      "name": "component_type",
+      "type": "string",
+      "desc": "The component type of log events to be returned. Acceptable values are events_api, workflows, functions and tables.",
+      "required": false,
+      "example": "workflows"
+    },
+    "cursor": {
+      "name": "cursor",
+      "type": "string",
+      "desc": "Paginate through collections of data by setting the cursor parameter to a next_cursor attribute returned by a previous request's response_metadata. See pagination for more detail.",
+      "required": false,
+      "example": "bG9nX2lkOjc5NjQ1NA=="
+    },
+    "limit": {
+      "name": "limit",
+      "type": "integer",
+      "desc": "The maximum number of items to return.",
+      "required": false,
+      "example": "100"
+    },
+    "log_event_type": {
+      "name": "log_event_type",
+      "type": "string",
+      "desc": "The event type of log events to be returned.",
+      "required": false,
+      "example": "test_log_event"
+    },
+    "max_date_created": {
+      "name": "max_date_created",
+      "type": "integer",
+      "desc": "The latest timestamp of the log to retrieve (epoch microseconds).",
+      "required": false,
+      "example": "1646665572336299"
+    },
+    "min_date_created": {
+      "name": "min_date_created",
+      "type": "integer",
+      "desc": "The earliest timestamp of the log to retrieve (epoch microseconds).",
+      "required": false,
+      "example": "1646665572336251"
+    },
+    "min_log_level": {
+      "name": "min_log_level",
+      "type": "string",
+      "desc": "The minimum log level of the log events to be returned. Defaults to info. Acceptable values (in order of relative importance from smallest to largest) are trace, debug, info, warn, error and fatal.",
+      "required": false,
+      "example": "info"
+    },
+    "sort_direction": {
+      "name": "sort_direction",
+      "type": "enum",
+      "desc": "The direction you want the data sorted by (always by timestamp)",
+      "required": false,
+      "example": "asc"
+    },
+    "source": {
+      "name": "source",
+      "type": "string",
+      "desc": "The source of log events to be returned. Acceptable values are slack and developer.",
+      "required": false,
+      "example": "slack"
+    },
+    "team_id": {
+      "name": "team_id",
+      "type": "string",
+      "desc": "The team who owns this log.",
+      "required": false,
+      "example": "T12345"
+    },
+    "token": {
+      "name": "token",
+      "type": "token",
+      "desc": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.",
+      "required": true,
+      "example": "xxxx-xxxxxxxxx-xxxx"
+    },
+    "trace_id": {
+      "name": "trace_id",
+      "type": "string",
+      "desc": "The trace ID of log events to be returned.",
+      "required": false,
+      "example": "Tr432f2"
+    }
+  },
+  "name": "admin.apps.activities.list",
+  "link": "/methods/admin.apps.activities.list",
+  "desc": "Get logs for a specified team/org",
+  "response": {
+    "activities": [
+      {
+        "app_id": "A123456789",
+        "component_id": "Fn123",
+        "component_type": "functions",
+        "created": 1650463798824317,
+        "event_type": "function_execution_started",
+        "level": "info",
+        "payload": {
+          "function_name": "Reverse",
+          "function_type": "app"
+        },
+        "source": "slack",
+        "trace_id": "Tr123"
+      }
+    ],
+    "ok": true,
+    "response_metadata": {
+      "next_cursor": ""
+    }
+  },
+  "errors": {
+    "invalid_auth": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request.",
+    "invalid_array_arg": "The method was passed an array as an argument. Please only input valid strings.",
+    "token_expired": "Authentication token has expired",
+    "account_inactive": "Authentication token is for a deleted user or workspace when using a bot token.",
+    "request_timeout": "The method was called via a POST request, but the POST data was either missing or truncated.",
+    "not_authed": "No authentication token provided.",
+    "ratelimited": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request.",
+    "deprecated_endpoint": "The endpoint has been deprecated.",
+    "invalid_cursor": "Value passed for cursor was not valid or is no longer valid.",
+    "invalid_args": "Required arguments either were not provided or contain invalid values.",
+    "invalid_arg_name": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call.",
+    "method_deprecated": "The method has been deprecated.",
+    "invalid_app": "App ID provided is not valid for team and user.",
+    "fatal_error": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised.",
+    "invalid_arguments": "The method was either called with invalid arguments or some detail about the arguments passed is invalid, which is more likely when using complex arguments like blocks or attachments.",
+    "invalid_form_data": "The method was called via a POST request with Content-Typeapplication/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid.",
+    "service_unavailable": "The service is temporarily unavailable",
+    "org_login_required": "The workspace is undergoing an enterprise migration and will not be available until migration is complete.",
+    "missing_scope": "The token used is not granted the specific scope permissions required to complete this request.",
+    "is_bot": "This method cannot be called by a legacy bot.",
+    "token_revoked": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token.",
+    "ekm_access_denied": "Administrators have suspended the ability to post a message.",
+    "no_permission": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to.",
+    "internal_error": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised.",
+    "not_allowed_token_type": "The token type used in this request is not allowed.",
+    "enterprise_is_restricted": "The method cannot be called from an Enterprise.",
+    "accesslimited": "Access to this method is limited on the current network",
+    "invalid_team": "Team ID provided is not valid",
+    "invalid_post_type": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/jsonapplication/x-www-form-urlencodedmultipart/form-datatext/plain.",
+    "two_factor_setup_required": "Two factor setup is required.",
+    "team_added_to_org": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete.",
+    "missing_post_type": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header.",
+    "access_denied": "Access to a resource specified in the request is denied.",
+    "invalid_charset": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8iso-8859-1.",
+    "invalid_app_id": "App ID provided is not valid."
+  },
+  "warnings": {
+    "missing_charset": "The method was called via a POST request, and recommended practice for the specified Content-Type is to include a charset parameter. However, no charset was present. Specifically, non-form-data content types (e.g. text/plain) are the ones for which charset is recommended.",
+    "superfluous_charset": "The method was called via a POST request, and the specified Content-Type is not defined to understand the charset parameter. However, charset was in fact present. Specifically, form-data content types (e.g. multipart/form-data) are the ones for which charset is superfluous."
+  },
+  "is_deprecated": false,
+  "content_types": [
+    "application/x-www-form-urlencoded"
+  ]
+}
