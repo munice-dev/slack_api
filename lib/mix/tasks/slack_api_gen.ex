@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.SlackAPI.Gen do
+defmodule Mix.Tasks.SlackApi.Gen do
   @moduledoc """
   generate modules using API information from the slack_doc/*.json
 
@@ -36,8 +36,10 @@ defmodule Mix.Tasks.SlackAPI.Gen do
           end
         end
 
+      file = String.replace(doc.file, ".json", "")
+
       file_path =
-        "#{Mix.Tasks.Slack.Doc.root_dir()}/lib/slack_api/#{Macro.underscore(doc.file)}.ex"
+        "#{Mix.Tasks.Slack.Doc.root_dir()}/lib/slack_api/#{Macro.underscore(file)}.ex"
 
       File.mkdir_p!(file_path |> Path.expand() |> Path.dirname())
       File.write!(file_path, Macro.to_string(body), [:write])
