@@ -27,6 +27,7 @@ defmodule SlackAPI.MixProject do
   defp deps do
     [
       {:slack_api_docs, "~> 0.1.2", only: [:dev], runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:tesla, "~> 1.13"}
     ]
   end
