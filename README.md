@@ -17,6 +17,7 @@ def deps do
 end
 ```
 
+## Update API
 Run the following command to generate the Slack API documentation in JSON format, 
 
 which will be downloaded and created in the `docs` directory.
@@ -29,3 +30,22 @@ To generate Elixir API modules based on the JSON file, execute the following com
 ```bash
 $ mix slack_api.gen
 ```
+
+## Usage
+
+just chat to channel
+```elixir
+token = "xoxb-00000000000-0000000000-OOOOOOOOO"
+SlackAPI.req(%SlackAPI.Chat.PostMessage{
+  token: token,
+  channel: "BBUNGBBUNG",
+  text: "blahblah"
+})
+```
+
+call apps.conversations.open api (for socket mode)
+```elixir
+SlackAPI.req(%SlackAPI.Apps.Connections.Open{token: token})
+```
+
+
