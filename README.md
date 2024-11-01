@@ -15,7 +15,7 @@ by adding `slack_api` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:slack_api, "~> 1.0.0"}
+    {:slack_api, "~> 1.2"}
   ]
 end
 ```
@@ -38,9 +38,9 @@ $ mix slack_api.gen
 
 just chat to channel
 ```elixir
-token = "xoxb-00000000000-0000000000-OOOOOOOOO"
+bot_token = "xoxb-00000000000-0000000000-OOOOOOOOO"
 SlackAPI.req(%SlackAPI.Chat.PostMessage{
-  token: token,
+  token: bot_token,
   channel: "BBUNGBBUNG",
   text: "blahblah"
 })
@@ -48,7 +48,8 @@ SlackAPI.req(%SlackAPI.Chat.PostMessage{
 
 call apps.conversations.open api (for socket mode)
 ```elixir
-SlackAPI.req(%SlackAPI.Apps.Connections.Open{token: token})
+app_token = "0000-00000000000-0000000000-OOOOOOOOO"
+SlackAPI.req(%SlackAPI.Apps.Connections.Open{token: app_token})
 ```
 
 

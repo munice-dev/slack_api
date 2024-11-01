@@ -2,20 +2,10 @@ defmodule SlackReq do
   require Logger
   use Tesla
 
-  @spec client(SlackAPI.t()) :: Tesla.Client.t()
-  def client(data) do
-    token =
-      Enum.find_value(SlackAPI.headers(data), fn :token ->
-        data.token
-      end)
-
-    client(SlackAPI.base_url(data), SlackAPI.method(data), token)
-  end
-
-  @spec client(String.t(), :post | :get, String.t() | nil) :: Tesla.Client.t()
-  def client(url, method, token \\ nil) do
+  @spec client(String.t(), :get | :post, String.t() | nil) :: Tesla.Client.t()
+  def client(base_url, method, token) do
     middleware = [
-      {Tesla.Middleware.BaseUrl, url},
+      {Tesla.Middleware.BaseUrl, base_url},
       Tesla.Middleware.FormUrlencoded
     ]
 
@@ -27,7 +17,7 @@ defmodule SlackReq do
       end
 
     middleware =
-      if method == :post do
+      if method in [:post, :get] do
         [Tesla.Middleware.JSON | middleware]
       else
         middleware
@@ -38,18 +28,29 @@ defmodule SlackReq do
 
   @spec action(SlackAPI.t()) :: {:ok, term()} | {:error, String.t()}
   def action(data) do
+    headers = SlackAPI.headers(data)
+    base_url = SlackAPI.base_url(data)
+    url = SlackAPI.url(data)
+    method = SlackAPI.method(data)
+    token = Enum.find_value(headers, fn :token -> data.token end)
+
     args =
       data
       |> Map.from_struct()
-      |> Enum.reject(fn {k, _} -> k in SlackAPI.headers(data) end)
+      |> Enum.reject(fn {k, _} -> k in headers end)
       |> Enum.filter(fn {_, v} -> v != nil end)
       |> Map.new()
 
-    req(client(data),
-      body: args,
-      url: SlackAPI.url(data),
-      method: SlackAPI.method(data)
-    )
+    options =
+      case method do
+        :get ->
+          [query: args, url: url, method: method]
+
+        :post ->
+          [body: args, url: url, method: method]
+      end
+
+    req(client(base_url, method, token), options)
   end
 
   @spec req(Tesla.Client.t(), url: String.t(), body: binary(), method: :post | :get) ::
