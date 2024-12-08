@@ -4,10 +4,7 @@ defmodule SlackReq do
 
   @spec client(String.t(), :get | :post, String.t() | nil) :: Tesla.Client.t()
   def client(base_url, method, token) do
-    middleware = [
-      {Tesla.Middleware.BaseUrl, base_url},
-      Tesla.Middleware.FormUrlencoded
-    ]
+    middleware = [{Tesla.Middleware.BaseUrl, base_url}]
 
     middleware =
       if token != nil do
@@ -17,10 +14,18 @@ defmodule SlackReq do
       end
 
     middleware =
-      if method in [:post, :get] do
-        [Tesla.Middleware.JSON | middleware]
-      else
-        middleware
+      case method do
+        :get ->
+          [Tesla.Middleware.FormUrlencoded | middleware]
+
+        :post ->
+          [
+            {Tesla.Middleware.JSON, encode_content_type: "application/json; charset=utf-8"}
+            | middleware
+          ]
+
+        _ ->
+          middleware
       end
 
     Tesla.client(middleware)
